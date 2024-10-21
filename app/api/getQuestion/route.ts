@@ -1,4 +1,4 @@
-export const maxDuration = 5;
+export const maxDuration = 60;
 import generateSummaryAndQuiz from "@/app/questionJSON/questionGenerator";
 import { NextResponse } from "next/server";
 
