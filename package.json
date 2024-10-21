@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@alch/alchemy-sdk": "^1.1.1",
@@ -38,6 +39,7 @@
     "next-themes": "^0.3.0",
     "pinata": "^1.5.0",
     "pino-pretty": "^11.2.2",
+    "prisma": "^5.21.1",
     "react": "^18",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18",
