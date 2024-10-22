@@ -17,6 +17,7 @@
     "@moralisweb3/core": "^2.7.4",
     "@moralisweb3/evm-api": "^2.27.2",
     "@moralisweb3/next": "^2.27.2",
+    "@next/font": "^14.2.15",
     "@prisma/client": "^5.20.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",

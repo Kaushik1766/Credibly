@@ -7,6 +7,6 @@ export async function getCoursesByCreator(creatorId: string) {
             creatorId: creatorId
         }
     })
-    // console.log(courses)
+    console.log(creatorId)
     return courses
 }

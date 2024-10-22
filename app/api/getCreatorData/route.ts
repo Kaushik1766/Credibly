@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid data' }, { status: 400 });
   }
 
-  youtubeId = youtubeId.slice(1);
+  youtubeId = '@' + youtubeId;
   try {
     // const uploads = await getUploadsId(accessToken)
     // const channelDetails = await getChannelDetails(accessToken)

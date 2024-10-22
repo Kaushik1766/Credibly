@@ -13,6 +13,14 @@ import { signOut, useSession } from 'next-auth/react';
 import Lottie from 'react-lottie';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Inter } from 'next/font/google'
+// import { IntegralCF } from '@next/font/google'
+
+
+const inter = Inter({ subsets: ['latin'] })
+// const integralCF = IntegralCF({ weight: '400' });  // Adjust weight if needed
+
+
 
 type CourseData = {
   title: string;
@@ -56,24 +64,29 @@ export default function Component({ params }: { params: { slug: string } }) {
   }, [data]);
 
   useEffect(() => {
-    // console.log(session.accessTok)
-    if (session && status === 'authenticated') {
-      console.log(session);
-      fetchData();
-    }
-  }, [session, status]);
+    fetchData()
+  }, [])
+
+  // useEffect(() => {
+  //   // console.log(session.accessTok)
+  //   if (session && status === 'authenticated') {
+  //     console.log(session);
+  //     fetchData();
+  //   }
+  // }, [session, status]);
 
   async function fetchData() {
-    const resp = await fetch('/api/getDashboardData', {
-      headers: {
-        Authorization: `Bearer ${(session as any).accessToken}`,
-      },
+    const resp = await fetch('/api/getCreatorData/', {
+      method: 'POST',
+      body: JSON.stringify({
+        youtubeId: slug
+      })
     });
-    if (resp.status == 500) {
-      signOut({
-        callbackUrl: '/',
-      });
-    }
+    // if (resp.status == 500) {
+    //   signOut({
+    //     callbackUrl: '/',
+    //   });
+    // }
     const respJson = await resp.json();
     if (respJson.error) {
       setError(respJson.error);
@@ -117,7 +130,7 @@ export default function Component({ params }: { params: { slug: string } }) {
               <ExternalLink className="w-6 h-6" />
             </div>
           </div>
-          <p className="text-sm text-center">
+          <p className={`text-sm text-center ${inter.className}`}>
             {data.channelDetails.description}
           </p>
           <Link
@@ -159,17 +172,17 @@ export default function Component({ params }: { params: { slug: string } }) {
                 key={idx}
                 className="bg-[#2D2A77] rounded-lg overflow-hidden"
               >
-                <div className="p-4 space-y-2">
+                <div className="px-8 py-4 space-y-2">
                   <h3 className="font-semibold">{item.title}</h3>
                   <Image
                     src={item.thumbnail}
                     alt="Course thumbnail"
                     width={400}
                     height={200}
-                    className="w-full object-cover"
+                    className="w-full object-cover rounded-xl border-2"
                   />
 
-                  <div className="flex">
+                  <div className="flex w-full justify-between">
                     <div className="flex justify-between items-center">
                       {/* <div className="flex items-center space-x-1">
                                             {[1, 2, 3].map((star) => (
