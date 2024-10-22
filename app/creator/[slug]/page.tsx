@@ -117,7 +117,7 @@ export default function Component({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen  text-white">
       <main className="flex flex-col md:flex-row p-4 md:p-6 space-y-6 md:space-y-0 md:space-x-6">
-        <aside className="md:w-1/3 lg:w-1/4 space-y-6 bg-black bg-opacity-20 rounded-xl shadow-lg p-2">
+        <aside className="md:w-1/3 lg:w-1/4 space-y-6 bg-gray-500 bg-opacity-20 backdrop-blur-md rounded-xl shadow-lg p-10">
           <div className="relative w-48 h-48 mx-auto">
             <Image
               src={data.channelDetails.profile}
@@ -136,7 +136,7 @@ export default function Component({ params }: { params: { slug: string } }) {
           <Link
             href={'https://youtube.com/' + slug}
             target="_blank"
-            className="w-full bg-[#2D2A77] hover:bg-[#3D3A87] py-2 rounded-md flex items-center justify-center space-x-2"
+            className="w-full border-2 py-2 rounded-md flex items-center justify-center space-x-2"
           >
             <LinkIcon className="w-4 h-4" />
             <span>Go to Channel</span>
@@ -150,7 +150,7 @@ export default function Component({ params }: { params: { slug: string } }) {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-[#2D2A77] p-2 rounded-md text-center"
+                className="border-2 p-2 rounded-md text-center"
               >
                 <div className="text-xl font-bold">{item.value}</div>
                 <div className="text-xs">{item.label}</div>
@@ -164,36 +164,26 @@ export default function Component({ params }: { params: { slug: string } }) {
                         <Twitter className="w-6 h-6" /> */}
           </div>
         </aside>
-        <section className="md:w-2/3 lg:w-3/4 space-y-6">
+        <section className="md:w-2/3 lg:w-3/4 space-y-6 ">
           <h2 className="text-2xl font-bold">COURSES BY CREATOR</h2>
           <div className="grid md:grid-cols-2 gap-10 m-5">
             {data.courseData.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-[#2D2A77] rounded-lg overflow-hidden"
+                className="bg-gray-500 bg-opacity-20 rounded-lg overflow-hidden"
               >
                 <div className="px-8 py-4 space-y-2">
                   <h3 className="font-semibold">{item.title}</h3>
-                  <Image
+                  <img
                     src={item.thumbnail}
                     alt="Course thumbnail"
                     width={400}
                     height={200}
-                    className="w-full object-cover rounded-xl border-2"
+                    className="w-full object-cover rounded-xl"
                   />
 
                   <div className="flex w-full justify-between">
                     <div className="flex justify-between items-center">
-                      {/* <div className="flex items-center space-x-1">
-                                            {[1, 2, 3].map((star) => (
-                                                <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
-                                            ))}
-                                            <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                            </svg>
-                                        </div> */}
                       <span className="text-sm">+15000 Enrolled</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
